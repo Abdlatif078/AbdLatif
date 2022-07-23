@@ -1,0 +1,357 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8" />
+    <title>PORTOFOLIO</title>
+    <style>
+      @import url('https://fonts.googleapis.com/css?family=poppins:200,300,400,500,600,700,800,900&display=swipe');
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'poppins', sans-serif;
+        scroll-behavior: smooth;
+      }
+      section {
+        padding: 100px;
+      }
+      .banner {
+        position: relative;
+        min-height: 100vh;
+        background-color: #a9c9ff;
+        background-image: -webkit-linear-gradient(180deg, #a9c9ff 0%, #ffbbec 100%);
+        background-image: -moz-linear-gradient(180deg, #a9c9ff 0%, #ffbbec 100%);
+        background-image: -o-linear-gradient(180deg, #a9c9ff 0%, #ffbbec 100%);
+        background-image: linear-gradient(180deg, #a9c9ff 0%, #ffbbec 100%);
+
+        background-size: cover;
+        background-position: right;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .banner h2 {
+        font-size: 3em;
+        color: rgb(31, 28, 28);
+        font-weight: 500;
+        line-height: 1em;
+      }
+      .banner h2 span {
+        font-size: 1.5em;
+        font-weight: 700;
+      }
+      .banner h3 {
+        font-size: 1.5em;
+        color: rgb(35, 31, 31);
+        font-weight: 500;
+      }
+      .btn {
+        position: relative;
+        background: #2196f3;
+        display: inline-block;
+        color: #fff;
+        margin-top: 20px;
+        padding: 10px 30px;
+        font-size: 18px;
+        text-transform: uppercase;
+        text-decoration: none;
+        letter-spacing: 2px;
+        font-weight: 500;
+      }
+      header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 40px 100px;
+        z-index: 1000;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: 0.5s;
+      }
+      header.sticky {
+        background: rgb(65, 61, 61);
+        padding: 20px 100px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+      }
+      header .logo {
+        color: #fff;
+        font-size: 24px;
+        text-transform: uppercase;
+        text-decoration: none;
+        font-weight: 700;
+        letter-spacing: 2px;
+      }
+      header.sticky .logo {
+        color: rgb(237, 228, 228);
+      }
+      header ul {
+        position: relative;
+        display: flex;
+      }
+      header ul li {
+        position: relative;
+        list-style: none;
+      }
+      header ul li a {
+        position: relative;
+        display: inline-block;
+        margin: 0 15px;
+        color: #fff;
+        text-decoration: none;
+      }
+      header.sticky ul li a {
+        color: rgb(237, 228, 228);
+      }
+      .heading {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 30px;
+        color: rgb(18, 16, 16);
+      }
+      .heading h2 {
+        font-weight: 600;
+        font-size: 30px;
+      }
+      .content {
+        display: flex;
+        justify-content: space-between;
+      }
+      .contentBx {
+        padding-right: 30px;
+      }
+      .contentBx h3 {
+        font-size: 24px;
+        margin-bottom: 10px;
+      }
+      .w50 {
+        min-width: 50%;
+      }
+      img {
+        max-width: 100%;
+      }
+      .services {
+        background: #111;
+      }
+      .heading.white {
+        color: #fff;
+      }
+      .services .content {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        flex-direction: row;
+      }
+      .services .content .servicesBx {
+        padding: 40px 20px;
+        background: #222;
+        color: #fff;
+        max-width: 340px;
+        margin: 20px;
+        text-align: center;
+        transition: 0.5s;
+      }
+      .services .content .servicesBx:hover {
+        background: cyan;
+      }
+      .services .content .servicesBx img {
+        max-width: 80px;
+        filter: invert(1);
+      }
+      .services .content .servicesBx h2 {
+        font-size: 20px;
+        font-weight: 600;
+      }
+      .contact {
+        background: #111;
+      }
+      .formBx {
+        min-width: 60%;
+      }
+      .formBx form {
+        display: flex;
+        flex-direction: column;
+      }
+      .formBx form h3,
+      .contactinfo h3 {
+        color: #fff;
+        font-size: 20px;
+        font-weight: 500;
+        margin-bottom: 10px;
+      }
+      .formBx form input,
+      .formBx form textarea {
+        margin-bottom: 20px;
+        padding: 15px;
+        font-size: 16px;
+        border: none;
+        outline: none;
+        background: #222;
+        color: #fff;
+        resize: none;
+      }
+      .formBx form textarea {
+        min-height: 200px;
+      }
+      .formBx form input::placeholder,
+      .formBx form textarea::placeholder {
+        color: #999;
+      }
+      .formBx form input[type='submit'] {
+        max-width: 100px;
+        background: #2196f3;
+        cursor: pointer;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+      }
+      .contactinfo {
+        min-width: 40%;
+      }
+      .contactinfoBx {
+        position: relative;
+      }
+      .contactinfoBx .box {
+        position: relative;
+        padding: 20px 0;
+        display: flex;
+      }
+      .contactinfoBx .box .text {
+        display: flex;
+        margin-left: 20px;
+        font-size: 16px;
+        color: #fff;
+        flex-direction: column;
+        font-weight: 300;
+      }
+      .contactinfoBx .box .text h3 {
+        font-weight: 500;
+        color: #2196f3;
+        margin-bottom: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <a href="#" class="logo">Portofolio</a>
+      <div class="toggle"></div>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skill">Skill</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </header>
+    <section class="banner" id="home">
+      <div class="textBx">
+        <h2>Hai,Saya <br /><span>Abd Latif</span></h2>
+        <h3>Saya Adalah Seorang Front End Web Development</h3>
+
+        <a href="#about" class="btn">About Me</a>
+      </div>
+    </section>
+    <section class="about" id="about">
+      <div class="heading">
+        <h2>About Me</h2>
+      </div>
+      <div class="content">
+        <div class="contentBx w50">
+          <h3>Saya Adalah Seorang Front End Web Development</h3>
+          <p>Selamat Menikmati Website saya,saya kuliah di Universitas Islam Madura Prodi Teknik Informatika.</p>
+        </div>
+        <div class="w50"><img src="{% static "to.jpg"%}" class="img" width="200"/></div>
+      </div>
+    </section>
+
+    <section class="services" id="skill">
+      <div class="heading white">
+        <h2>My Skill</h2>
+        <p>Kemampuan Saya Dalam Bidang Ini.</p>
+      </div>
+      <div class="content">
+        <div class="servicesBx">
+          <img src="{% static "web.jpg"%}" width="200" />
+          <h2>Web Design</h2>
+        </div>
+
+        <div class="servicesBx">
+          <img src="{% static "dev.png"%}" width="200" />
+          <h2>Web Development</h2>
+        </div>
+
+        <div class="servicesBx">
+          <img src="{% static "and.jpg"%}" width="200" />
+          <h2>Android App</h2>
+        </div>
+
+        <div class="servicesBx">
+          <img src="{% static "pho.jpg"%}" width="200" />
+          <h2>Photograpy</h2>
+        </div>
+
+        <div class="servicesBx">
+          <img src="{% static "wrt.jpg"%}" width="200" />
+          <h2>Content Writing</h2>
+        </div>
+
+        <div class="servicesBx">
+          <img src="{% static "vd.jpg"%}" width="200" />
+          <h2>Video Editing</h2>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="heading white">
+        <h2>Contact Us</h2>
+        <p>Keluh & Kesan Silahkan Di Tulis Di Bawah</p>
+      </div>
+      <div class="content">
+        <div class="contactinfo">
+          <h3>Contact Info</h3>
+          <div class="contactinfoBx">
+            <div class="box">
+              <div class="icon"></div>
+              <div class="text">
+                <h3>Alamat</h3>
+                <p>Jln.Trunojoyo,Pamekasan<br />Kec.Sampang<br />55060</p>
+              </div>
+            </div>
+            <div class="box">
+              <div class="icon"></div>
+              <div class="text">
+                <h3>Phone</h3>
+                <p>08658362379</p>
+              </div>
+            </div>
+            <div class="box">
+              <div class="icon"></div>
+              <div class="text">
+                <h3>Email</h3>
+                <p>abdlatif99@gmail.com</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="formBx">
+          <form>
+            <h3>Hubungi Saya</h3>
+            <input type="text" name="" placeholder="Nama Lengkap" />
+            <input type="text" name="" placeholder="Email" />
+            <textarea placeholder="Tulis Pesan Anda"></textarea>
+            <input type="submit" value="Kirim" />
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <script type="text/javascript">
+      window.addEventListener('scroll', function () {
+        var header = document.querySelector('header');
+        header.classList.toggle('sticky', window.scrollY > 0);
+      });
+    </script>
+  </body>
+</html>
